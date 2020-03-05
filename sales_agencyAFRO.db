@@ -1,7 +1,7 @@
 version 1
 
 
----------------------------------Database sales_agency ---------------------------------------
+---------------------------------Database sales_agency1---------------------------------------
 --------------Tables--------------------------------------------------------------------------
 
 CREATE TABLE customer(
@@ -45,7 +45,9 @@ asking_price INT NOT NULL,
 id_region TINYINT UNSIGNED NOT NULL,
 id_type TINYINT UNSIGNED NOT NULL,
 CONSTRAINT FK_RegionProperty
-FOREIGN KEY (id_region) REFERENCES region (id_region),
+FOREIGN KEY (id_region) REFERENCES region (id_region)
+ON DELETE CASCADE
+ON UPDATE RESTRICT,
 CONSTRAINT FK_TypeProperty
 FOREIGN KEY (id_type) REFERENCES type (id_type)
 ON DELETE CASCADE
@@ -61,9 +63,13 @@ id_agent INT UNSIGNED NOT NULL,
 id_customer INT UNSIGNED NOT NULL,
 id_property INT UNSIGNED NOT NULL,
 CONSTRAINT FK_AgentSale
-FOREIGN KEY (id_agent) REFERENCES agent (id_agent),
+FOREIGN KEY (id_agent) REFERENCES agent (id_agent)
+ON DELETE CASCADE
+ON UPDATE RESTRICT,
 CONSTRAINT FK_CustomerSale
-FOREIGN KEY (id_customer) REFERENCES customer (id_customer),
+FOREIGN KEY (id_customer) REFERENCES customer (id_customer)
+ON DELETE CASCADE
+ON UPDATE RESTRICT,
 CONSTRAINT FK_PropertySale
 FOREIGN KEY (id_property) REFERENCES property (id_property)
 ON DELETE CASCADE
