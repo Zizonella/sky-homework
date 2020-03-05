@@ -1,0 +1,155 @@
+version 1
+
+
+---------------------------------Database sales_agency ---------------------------------------
+--------------Tables--------------------------------------------------------------------------
+
+CREATE TABLE customer(
+id_customer INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+first_name CHAR(25) NOT NULL,
+surname CHAR(25) NOT NULL,
+email VARCHAR(40) NOT NULL,
+phone VARCHAR(15) NOT NULL
+)ENGINE=INNODB;
+
+
+CREATE TABLE agent(
+id_agent INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+email VARCHAR(50) NOT NULL,
+phone VARCHAR(15) NOT NULL,
+first_name CHAR(25) NOT NULL,
+surname CHAR(25) NOT NULL
+)ENGINE=INNODB;
+
+CREATE TABLE region(
+id_region TINYINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+area_name CHAR(10) NOT NULL
+)ENGINE=INNODB;
+
+
+CREATE TABLE type(
+id_type TINYINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+property_type VARCHAR(10) NOT NULL
+)ENGINE=INNODB;
+
+
+CREATE TABLE property(
+id_property INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+postcode VARCHAR(10) NOT NULL,
+bedrooms TINYINT NOT NULL,
+bathrooms TINYINT NOT NULL,
+has_garden BOOLEAN NOT NULL,
+has_parking BOOLEAN NOT NULL,
+sold BOOLEAN NOT NULL,
+asking_price INT NOT NULL,
+id_region TINYINT UNSIGNED NOT NULL,
+id_type TINYINT UNSIGNED NOT NULL,
+CONSTRAINT FK_RegionProperty
+FOREIGN KEY (id_region) REFERENCES region (id_region),
+CONSTRAINT FK_TypeProperty
+FOREIGN KEY (id_type) REFERENCES type (id_type)
+ON DELETE CASCADE
+ON UPDATE RESTRICT
+)ENGINE=INNODB;
+
+
+CREATE TABLE sale(
+sale_id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+date VARCHAR(20) NOT NULL,
+price VARCHAR(20) NOT NULL,
+id_agent INT UNSIGNED NOT NULL,
+id_customer INT UNSIGNED NOT NULL,
+id_property INT UNSIGNED NOT NULL,
+CONSTRAINT FK_AgentSale
+FOREIGN KEY (id_agent) REFERENCES agent (id_agent),
+CONSTRAINT FK_CustomerSale
+FOREIGN KEY (id_customer) REFERENCES customer (id_customer),
+CONSTRAINT FK_PropertySale
+FOREIGN KEY (id_property) REFERENCES property (id_property)
+ON DELETE CASCADE
+ON UPDATE RESTRICT
+)ENGINE=INNODB;
+
+
+----------------------------------------Inserting values---------------------------------------
+
+
+insert into customer(first_name,surname,email,phone)
+values('Oliver','Smith','oliver.s@hotmail.com', '07546367488'),
+('Amelia','Johes','amelia@hotmail.com', '07549864338'),
+('George','Williams','williams954@hotmail.co.uk', '07334098768'),
+('Harry','Brown','harry.brown@hotmail.com', '07736255444'),
+('Jack','Taylor','Tay44@gmail.com', '07586435348'),
+('Leo','Johnson','lee2010@yahoo.co.uk', '07589353495'),
+('Oscar','Lee','oscar1@hotmail.com', '07888550334'),
+('Ella','Davies','davies.ella@gmail.com', '07540958733'),
+('Ava','Wilson','ava.loves@hotmail.co.uk', '07445984908'),
+('Charlie','Evans','Evans.C@hgmail.com', '07887470049'),
+('Sophia','Thomas','dr.thomas@yahoo.com', '07646489508'),
+('Grace','Roberts','Grace.roberts@hotmail.co.uk', '07555433397'),
+('Arthur','Walker','arthur1998@gamil.com', '07112387532'),
+('Isabella','Robinson','bella.rob@hotmail.co.uk', '07499320300'),
+('Muhammad','Thompson','Muhammed@hotmail.com', '07938429311');
+
+insert into agent(email, phone, first_name, surname)
+values('Till.Harry@hotmail.com','07583445348','Harry','Till'),
+('Kelly.Kate@hotmail.com','07888644346','Kate','Kelly'),
+('Goodwill.Mark@hotmail.com','07577543344','Mark','Goodwill'),
+('Pander.David@hotmail.com','07875433444','David','Pander'),
+('Gash.Louise@hotmail.com','07987655458','Louise','Gash');
+
+
+insert into region(area_name)
+values('Central'),
+('North'),
+('East'),
+('South'),
+('West');
+
+
+insert into type(property_type)
+values('Flat'),
+('House'),
+('Bungalow');
+
+insert into property(postcode, bedrooms, bathrooms, has_garden, has_parking, sold, asking_price, id_region, id_type)
+values('TW3 5ED', 1, 1, true, false , false, 730000, 1, 1),
+('TW3 5ED', 2, 1, true, false , false, 230000, 1, 2),
+('FD2 4HH', 1, 2, false, true , true, 220000, 1, 3),
+('SE2 4DE', 1, 1, true, false , false, 450000, 3, 1),
+('GH4 3SF', 2, 1, false, false , true, 345000, 2, 1),
+('KK6 3JD', 2, 1, true, true , false, 2000000, 1, 3),
+('WS4 3DD', 2, 1, true, false , false, 190000, 5, 2),
+('RF4 5OP', 3, 1, true, false , false, 234000, 1, 2),
+('ER9 8OK', 3, 2, false, true , false, 648000, 4, 2),
+('FC3 4DF', 3, 1, true, false , false, 224000, 2, 2),
+('FG6 4RT', 2, 2, true, false , false, 439000, 2, 2),
+('SD4 5TG', 1, 1, false, false , false, 300000, 3, 1),
+('FV9 6EH', 4, 3, true, true , false, 550050, 4, 1),
+('AS0 0DE', 2, 1, true, true , true, 344000, 1, 3),
+('DE2 1ED', 1, 1, true, false , false, 346000, 3, 1),
+('PF7 4SS', 1, 1, false, false , false, 239000, 1, 1),
+('TW9 3RA', 3, 1, true, false , false, 1200000, 1, 1),
+('RG3 5RF', 2, 1, true, false , false, 290000, 5, 2),
+('SD3 5AW', 3, 1, false, true , true, 573000, 1, 2),
+('JS3 7RD', 3, 2, true, false , false, 283000, 4, 2),
+('ER5 7TK', 2, 1, false, true , false, 365000, 2, 2);
+
+
+insert into sale(date, price, id_agent, id_customer, id_property)
+values('12/02/2020','230k',2 , 14, 3),
+('22/03/2018','150k', 1, 2, 5),
+('10/04/2019','590k', 2, 3, 14),
+('02/08/2015','450k', 3, 12, 19),
+('29/07/2018','344k', 4, 1, 3),
+('11/05/2017','190k', 5, 5, 2),
+('08/01/2018','298k', 4, 5, 5),
+('23/07/2019','387k', 5, 7, 1),
+('27/02/2012','250k', 4, 6, 6),
+('09/04/2017','290k', 3, 9, 3),
+('29/04/2019','470k', 1, 8, 2),
+('15/11/2016','355k', 1, 10, 4),
+('19/05/2015','850k', 1, 11, 7),
+('12/08/2019','120k', 3, 4, 12),
+('22/12/2017','200k', 3, 13, 4);
+
