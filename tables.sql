@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS type;
 DROP TABLE IF EXISTS region;
 
+
 CREATE TABLE type
 (
     id   tinyint PRIMARY KEY AUTO_INCREMENT,
@@ -35,11 +36,13 @@ CREATE TABLE property
 
 CREATE TABLE agent
 (
-    id         int PRIMARY KEY AUTO_INCREMENT,
-    email      varchar(50) NOT NULL,
-    password   varchar(50) NOT NULL,
-    first_name varchar(20) NOT NULL,
-    last_name  varchar(20) NOT NULL
+    id               int PRIMARY KEY AUTO_INCREMENT,
+    email            varchar(50) NOT NULL,
+    password         varchar(50) NOT NULL,
+    first_name       varchar(20) NOT NULL,
+    last_name        varchar(20) NOT NULL,
+    is_administrator boolean     NOT NULL DEFAULT FALSE,
+    is_employed      boolean     NOT NULL DEFAULT TRUE
 );
 
 CREATE TABLE customer

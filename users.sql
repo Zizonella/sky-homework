@@ -1,0 +1,1 @@
+GRANT ALL PRIVILEGES ON library.* TO '<administrator'@'localhost' IDENTIFIED BY '<admin>' WITH GRANT OPTION;
