@@ -1,0 +1,139 @@
+-----------Privileges------------------------------------------------------------------------
+--------For Owner-----------------------------------------------------------------------------
+creare user 'owner'@'localhost' identified by 'owner' WITH GRANT OPTIONS;
+GRANT ALL on library.* To 'owmer'@'localhost' WITH GRANT OPTIONS;
+
+
+
+--------For Admin----------------------------------------------------------------------------
+CREATE ROLE 'agency_admin';
+
+GRANT READ ON library.* TO agency_admin;
+GRANT UPDATE ON library.* TO agency_admin;
+GRANT CREATE ON library.property TO agency_admin;
+GRANT CREATE ON library.sale TO agency_admin;
+GRANT CREATE ON library.customer TO agency_admin;
+GRANT CREATE ON library.agent TO agency_admin;
+
+creare user 'admin'@'localhost' identified by 'admin321';
+GRANT 'agency_admin' TO 'admin'@'localhost';
+
+
+
+
+
+
+(ignore this)
+--creare user 'admin'@'localhost' identified by 'admin321';
+--GRANT READ ON library.* TO 'admin'@'localhost';
+--GRANT UPDATE ON library.* TO 'admin'@'localhost';
+--GRANT CREATE ON library.property TO 'admin'@'localhost';
+--GRANT CREATE ON library.sale TO 'admin'@'localhost';
+--GRANT CREATE ON library.customer TO 'admin'@'localhost';
+--GRANT CREATE ON library.agent TO 'admin'@'localhost';
+
+
+
+--------For Agent-------------------------------------------------------------------------
+CREATE ROLE 'agency_agent';
+
+GRANT READ ON library.* TO 'agency_agent';
+revoke select on library.agent from 'agency_agent';
+GRANT READ (email, first_name, last_name, is_administrator) ON library.agent TO 'agency_agent';
+GRANT UPDATE ON library.property TO 'agency_agent';
+GRANT UPDATE ON library.sale TO 'agency_agent';
+GRANT UPDATE ON library.customer TO 'agency_agent';
+GRANT CREATE ON library.property TO 'agency_agent';
+GRANT CREATE ON library.sale TO 'agency_agent';
+GRANT CREATE ON library.customer TO 'agency_agent';
+
+creare user 'hanna1'@'localhost' identified by 'monty6';
+creare user 'funny2'@'localhost' identified by 'fanny7';
+creare user 'paul3'@'localhost' identified by 'pauly';
+creare user 'maria4'@'localhost' identified by 'erich';
+creare user 'robert5'@'localhost' identified by 'rm100';
+
+GRANT 'agency_agent' TO 
+'hanna1'@'localhost', 
+'funny2'@'localhost', 
+'paul3'@'localhost', 
+'maria4'@'localhost', 
+'robert5'@'localhost';
+
+
+
+
+(ignore this)
+--creare user 'hanna1'@'localhost' identified by 'monty6';
+--GRANT READ ON library.* TO 'hanna1'@'localhost';
+--revoke select on library.agent from 'hanna1'@'localhost';
+--GRANT UPDATE ON library.property TO 'hanna1'@'localhost';
+--GRANT UPDATE ON library.sale TO 'hanna1'@'localhost';
+--GRANT UPDATE ON library.customer TO 'hanna1'@'localhost';
+--GRANT CREATE ON library.property TO 'hanna1'@'localhost';
+--GRANT CREATE ON library.sale TO 'hanna1'@'localhost';
+--GRANT CREATE ON library.customer TO 'hanna1'@'localhost';
+
+--------For Customer-------------------------------------------------------------------------
+
+CREATE ROLE 'agency_customer';
+
+GRANT READ (email, first_name, last_name) ON library.agent TO 'agency_customer';
+GRANT READ (region_id, bedroom, bathroom, type_id, has_garden, has_parking, sold, asking_price) ON library.property TO 'agency_customer';
+GRANT READ ON library.sale TO 'agency_customer';
+GRANT READ ON library.type TO 'agency_customer';
+GRANT READ ON library.region TO 'agency_customer';
+
+creare user 'oliver1'@'localhost' identified by '1';
+creare user 'amelie2'@'localhost' identified by '12';
+creare user 'george3'@'localhost' identified by '123';
+creare user 'harry4'@'localhost' identified by '1234';
+creare user 'jack5'@'localhost' identified by '12345';
+creare user 'leo6'@'localhost' identified by '123456';
+creare user 'oscar7'@'localhost' identified by '1234567';
+creare user 'ella8'@'localhost' identified by '12345678';
+creare user 'ava9'@'localhost' identified by '123456789';
+creare user 'charlie10'@'localhost' identified by '1234567891';
+creare user 'sophia11'@'localhost' identified by '12345678912';
+creare user 'grace12'@'localhost' identified by '123456789123';
+creare user 'arthur13'@'localhost' identified by '1234567891234';
+creare user 'isabella14'@'localhost' identified by '12345678912345';
+creare user 'muhammad15'@'localhost' identified by '123456789123456';
+
+GRANT 'agency_customer' TO
+'oliver1'@'localhost',
+'amelie2'@'localhost',
+'george3'@'localhost',
+'harry4'@'localhost',
+'jack5'@'localhost',
+'leo6'@'localhost',
+'oscar7'@'localhost',
+'ella8'@'localhost',
+'ava9'@'localhost',
+'charlie10'@'localhost',
+'sophia11'@'localhost',
+'grace12'@'localhost',
+'arthur13'@'localhost',
+'isabella14'@'localhost',
+'muhammad15'@'localhost';
+
+
+
+
+
+
+(ignore this)
+--creare user 'oliver1'@'localhost' identified by '1';
+--GRANT READ (email, first_name, last_name) ON library.agent TO 'oliver1'@'localhost';
+--GRANT READ (region_id, bedroom, bathroom, type_id, has_garden, has_parking, sold, asking_price) ON library.property TO 'oliver1'@'localhost';
+--GRANT READ ON library.sale TO 'oliver1'@'localhost';
+--GRANT READ ON library.type TO 'oliver1'@'localhost';
+--GRANT READ ON library.region TO 'oliver1'@'localhost';
+
+
+
+
+
+
+
+
