@@ -2,16 +2,29 @@
 # who wants to know what a 2 bedroom apartment in West London costs
 # so that I can potentially buy one.
 
-SELECT property.id, postcode, name AS region
-FROM property INNER JOIN region ON property.region_id = region.id
-WHERE region.name= 'West' AND bedrooms = 2;
+# SELECT property.id, postcode, name AS region
+# FROM property INNER JOIN region ON property.region_id = region.id
+# WHERE region.name= 'West' AND bedrooms = 2;
+SELECT
+    property.id, postcode, name AS region, type AS type, asking_price
+FROM property
+         INNER JOIN region ON property.region_id=region.id
+         INNER JOIN type ON property.type_id=type.id -- (i added this to specif only flats)
+WHERE region.name = 'West' AND bedrooms = '2' AND type.type = 'flat';
 
 #I am a customer
 # who wants to know buy a 1 bedroom apartment in East London
 # so that I can relocate.
-SELECT property.id, name AS region
-FROM property INNER JOIN region ON property.region_id = region.id
-WHERE region.name = 'East' AND bedrooms = 1;
+# SELECT property.id, name AS region
+# FROM property INNER JOIN region ON property.region_id = region.id
+# WHERE region.name = 'East' AND bedrooms = 1;
+
+SELECT
+    property.id, postcode, name AS region, type AS type
+FROM property
+         INNER JOIN region ON property.region_id=region.id
+         INNER JOIN type ON property.type_id=type.id -- (i added this to specif only flats)
+WHERE region.name = 'East' AND bedrooms = '1' AND type.type = 'flat';
 
 # As an agent
 # I  want to add a new property

@@ -42,7 +42,8 @@ CREATE TABLE agent
     first_name       varchar(20) NOT NULL,
     last_name        varchar(20) NOT NULL,
     is_administrator boolean     NOT NULL DEFAULT FALSE,
-    is_employed      boolean     NOT NULL DEFAULT TRUE
+    is_employed      boolean     NOT NULL DEFAULT TRUE,
+    salary           int         NOT NULL
 );
 
 CREATE TABLE customer
