@@ -1,6 +1,7 @@
 <?php
 
-abstract class Person {
+abstract class Person
+{
     private $first_name;
     private $last_name;
 
@@ -44,6 +45,12 @@ class Customer extends Person
         $this->id = $id;
         $this->password = $password;
         $this->email = $email;
+    }
+
+    public function getFullName()
+    {
+        return strtoupper($this->$first_name . ' ' . $this->$last_name);
+
     }
 }
 
@@ -90,6 +97,12 @@ class Type
         $this->id = $id;
         $this->type = $type;
     }
+    public function getId(){
+        return $this->id;
+    }
+    public function getName(){
+        return $this->type;
+    }
 }
 
 class Region
@@ -101,7 +114,12 @@ class Region
     {
         $this->id = $id;
         $this->name = $name;
-
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function getName(){
+        return $this->name;
     }
 }
 
@@ -123,15 +141,12 @@ class Sale
         $this->property = $property;
         $this->price = $price;
     }
-
 }
-
-$myAgent = new Agent(1, 'hhh@hh.uk', 123, 'Hanna', 'Hannowitz', 30000);
-$myCustomer = new Customer(1, 'Oliver', 'Smith', 1, 'oliver.s@hotmail.com');
-$myRegion = new Region(1, 'East');
-$myType = new Type(1, 'Flat');
-$myProperty = new Property(1, $myRegion, 'NW6 3JY', 2, 1, $myType, false, false, 300000); //$myProperty is the property object
-$mySale = new Sale(1, '2019-02-02', $myAgent, $myCustomer, $myProperty, 230000);
-$myProperty->sell();
-var_dump($myProperty);
-echo "Zita";
+//
+//$myAgent = new Agent(1, 'hhh@hh.uk', 123, 'Hanna', 'Hannowitz', 30000);
+//$myCustomer = new Customer(1, 'Oliver', 'Smith', 1, 'oliver.s@hotmail.com');
+//$myRegion = new Region(1, 'East');
+//$myType = new Type(1, 'Flat');
+//$myProperty = new Property(1, $myRegion, 'NW6 3JY', 2, 1, $myType, false, false, 300000); //$myProperty is the property object
+//$mySale = new Sale(1, '2019-02-02', $myAgent, $myCustomer, $myProperty, 230000);
+//$myProperty->sell();

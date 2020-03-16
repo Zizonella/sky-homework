@@ -18,5 +18,5 @@ CREATE PROCEDURE insert_into_property (    region_id    tinyint,
                                            sold         boolean,
                                            asking_price int )
 BEGIN
-    INSERT INTO library.property (region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price);
+    INSERT INTO library.listing (region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price);
 END;

@@ -9,6 +9,21 @@ DROP USER IF EXISTS 'hanna'@'localhost';
 DROP USER IF EXISTS 'paul'@'localhost';
 DROP USER IF EXISTS 'maria'@'localhost';
 DROP USER IF EXISTS 'robert'@'localhost';
+DROP USER IF EXISTS  'oliver1'@'localhost' ;
+DROP USER IF EXISTS  'amelie2'@'localhost' ;
+DROP USER IF EXISTS  'george3'@'localhost';
+DROP USER IF EXISTS  'harry4'@'localhost' ;
+DROP USER IF EXISTS  'jack5'@'localhost' ;
+DROP USER IF EXISTS  'leo6'@'localhost' ;
+DROP USER IF EXISTS  'oscar7'@'localhost' ;
+DROP USER IF EXISTS  'ella8'@'localhost' ;
+DROP USER IF EXISTS  'ava9'@'localhost' ;
+DROP USER IF EXISTS  'charlie10'@'localhost' ;
+DROP USER IF EXISTS  'sophia11'@'localhost' ;
+DROP USER IF EXISTS  'grace12'@'localhost' ;
+DROP USER IF EXISTS  'arthur13'@'localhost' ;
+DROP USER IF EXISTS  'isabella14'@'localhost' ;
+DROP USER IF EXISTS  'muhammad15'@'localhost';
 
 # Because this is a small agency, the owner who works at the agency is also an admin so we don't need a separate owner role.
 # ROLES
@@ -18,7 +33,7 @@ GRANT ALL PRIVILEGES ON library.* TO administrator WITH GRANT OPTION ;
 # The GRANT OPTION privilege enables you to give to other users or remove from other users those privileges that you yourself possess.
 
 CREATE ROLE offsite_administrator;
-GRANT SELECT,INSERT,UPDATE,DELETE on library.property TO offsite_administrator;
+GRANT SELECT,INSERT,UPDATE,DELETE on library.listing TO offsite_administrator;
 GRANT SELECT,INSERT,UPDATE,DELETE on library.sale TO offsite_administrator;
 
 # USERS ---- > This password is NOT the same Password as we have inserted into the database. This password is only for logging in.
@@ -59,7 +74,7 @@ CREATE OR REPLACE USER 'isabella14'@'localhost' IDENTIFIED BY '12345678912345';
 CREATE OR REPLACE USER 'muhammad15'@'localhost' IDENTIFIED BY '123456789123456';
 
 
-GRANT SELECT (region_id,bedrooms,bathrooms,type_id,has_garden,has_parking,sold,asking_price) ON library.property  TO
+GRANT SELECT (region_id,bedrooms,bathrooms,type_id,has_garden,has_parking,sold,asking_price) ON library.listing  TO
 'oliver1'@'localhost',
 'amelie2'@'localhost',
 'george3'@'localhost',

@@ -6,10 +6,10 @@
 # FROM property INNER JOIN region ON property.region_id = region.id
 # WHERE region.name= 'West' AND bedrooms = 2;
 SELECT
-    property.id, postcode, name AS region, type AS type, asking_price
-FROM property
-         INNER JOIN region ON property.region_id=region.id
-         INNER JOIN type ON property.type_id=type.id -- (i added this to specif only flats)
+    listing.id, postcode, name AS region, type AS type, asking_price
+FROM listing
+         INNER JOIN region ON listing.region_id=region.id
+         INNER JOIN type ON listing.type_id=type.id -- (i added this to specif only flats)
 WHERE region.name = 'West' AND bedrooms = '2' AND type.type = 'flat';
 
 #I am a customer
@@ -20,17 +20,17 @@ WHERE region.name = 'West' AND bedrooms = '2' AND type.type = 'flat';
 # WHERE region.name = 'East' AND bedrooms = 1;
 
 SELECT
-    property.id, postcode, name AS region, type AS type
-FROM property
-         INNER JOIN region ON property.region_id=region.id
-         INNER JOIN type ON property.type_id=type.id -- (i added this to specif only flats)
+    listing.id, postcode, name AS region, type AS type
+FROM listing
+         INNER JOIN region ON listing.region_id=region.id
+         INNER JOIN type ON listing.type_id=type.id -- (i added this to specif only flats)
 WHERE region.name = 'East' AND bedrooms = '1' AND type.type = 'flat';
 
 # As an agent
 # I  want to add a new property
 # so that I can sell it.
 
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price)
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price)
 VALUES	(11, 4, 'KK6 3JD',	1,	1,	3,	true, true,	false,	2000000);
 
 
@@ -46,7 +46,7 @@ WHERE name = 'South South West';
 # so I stay within my budget.
 
 SELECT id, asking_price AS properties_within_budget
-FROM property
+FROM listing
 WHERE asking_price <= 500000
 ORDER BY asking_price asc ;
 

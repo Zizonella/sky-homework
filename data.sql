@@ -1,5 +1,5 @@
 DELETE FROM sale;
-DELETE FROM property;
+DELETE FROM listing;
 DELETE FROM customer;
 DELETE FROM agent;
 DELETE FROM region;
@@ -57,34 +57,35 @@ values('Oliver','Smith', 1,'oliver.s@hotmail.com'),
       ('Muhammad','Thompson', 123456789123456,'Muhammed@hotmail.com');
 
 
-INSERT INTO property (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (1, 1, 'NW6 3JY',2, 1, 2, false, false, false, 300000);
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (2, 2, 'W11 2JR',3, 1, 2, false, false, false, 534000);
-INSERT INTO property (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (3, 3, 'SW16 4EA',2, 1, 3, false, false, false, 290000);
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (4, 4, 'E6 5JG',2, 1, 3, false, false, false, 300000);
-INSERT INTO property (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (5, 1, 'NW8 3JY',3, 1, 3, true, true, false, 650000);
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (6, 3, 'S42 9QB',4, 3, 1,  true, true, false, 1000000);
-INSERT INTO property (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (7, 3, 'SW16 4AL',2, 1, 2, false, false, false, 420000);
-INSERT INTO property (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (8, 3, 'SW6 3JY',1, 1, 2, false, false, false, 300000);
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (9, 4, 'E7 9PX',3, 1, 3, true, true, false, 350000);
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES	(10, 2, 'TW3 5ED',	2,	2,	2,	true, true,	false,	650000);
-INSERT INTO property (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES	(11, 1, 'KK6 3JD',	2,	1,	3,	true, true,	false,	2000000);
+INSERT INTO listing (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (1, 1, 'NW6 3JY',2, 1, 2, false, false, false, 300000);
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (2, 2, 'W11 2JR',3, 1, 2, false, false, false, 534000);
+INSERT INTO listing (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (3, 3, 'SW16 4EA',2, 1, 3, false, false, false, 290000);
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (4, 4, 'E6 5JG',2, 1, 3, false, false, false, 300000);
+INSERT INTO listing (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (5, 1, 'NW8 3JY',3, 1, 3, true, true, false, 650000);
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (6, 3, 'S42 9QB',4, 3, 1,  true, true, false, 1000000);
+INSERT INTO listing (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (7, 3, 'SW16 4AL',2, 1, 2, false, false, false, 420000);
+INSERT INTO listing (id, region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (8, 3, 'SW6 3JY',1, 1, 2, false, false, false, 300000);
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES (9, 4, 'E7 9PX',3, 1, 3, true, true, false, 350000);
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES	(10, 2, 'TW3 5ED',	2,	2,	2,	true, true,	false,	650000);
+INSERT INTO listing (id,region_id, postcode, bedrooms, bathrooms, type_id, has_garden, has_parking, sold, asking_price) VALUES	(11, 1, 'KK6 3JD',	2,	1,	3,	true, true,	false,	2000000);
 
 
 # property 1 sold
 INSERT INTO sale VALUES (1,'2019-02-02',2,3,1,230000);
-UPDATE property SET sold = 1 WHERE id = 1;
+UPDATE listing SET sold = 1 WHERE id = 1;
 
+# property 2 sold
 INSERT INTO sale VALUES (2,'2018-12-27',3,5,2,538047);
-UPDATE property SET sold = 1 WHERE id = 2;
+UPDATE listing SET sold = 1 WHERE id = 2;
 
 INSERT INTO sale VALUES (3,'2020-02-18',2,6,5,870831);
-UPDATE property SET sold = 1 WHERE id = 5;
+UPDATE listing SET sold = 1 WHERE id = 5;
 
 INSERT INTO sale VALUES (4,'2020-1-24',1,1,7,443200);
-UPDATE property SET sold = 1 WHERE id = 7;
+UPDATE listing SET sold = 1 WHERE id = 7;
 
 INSERT INTO sale VALUES (5,'2017-02-01',3,8,8,258186);
-UPDATE property SET sold = 1 WHERE id = 8;
+UPDATE listing SET sold = 1 WHERE id = 8;
 
 
 

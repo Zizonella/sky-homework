@@ -18,7 +18,7 @@ CREATE TABLE region
     name varchar(10) NOT NULL
 );
 
-CREATE TABLE property
+CREATE TABLE listing
 (
     id           int PRIMARY KEY AUTO_INCREMENT,
     region_id    tinyint     NOT NULL,
@@ -61,9 +61,9 @@ CREATE TABLE sale
     date        date NOT NULL,
     agent_id    int  NOT NULL,
     customer_id int  NOT NULL,
-    property_id int  NOT NULL,
+    listing_id int  NOT NULL,
     price       int  NOT NULL,
     CONSTRAINT `fk_sale_agent` FOREIGN KEY (agent_id) REFERENCES agent (id) ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT `fk_sale_customer` FOREIGN KEY (customer_id) REFERENCES customer (id) ON UPDATE CASCADE ON DELETE RESTRICT,
-    CONSTRAINT `fk_sale_house` FOREIGN KEY (property_id) REFERENCES property (id) ON UPDATE CASCADE ON DELETE RESTRICT
+    CONSTRAINT `fk_sale_house` FOREIGN KEY (listing_id) REFERENCES listing (id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
