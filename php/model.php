@@ -2,8 +2,8 @@
 
 abstract class Person
 {
-    private $first_name;
-    private $last_name;
+    protected $first_name;
+    protected $last_name;
 
     public function __construct($first_name, $last_name)
     {
@@ -14,14 +14,14 @@ abstract class Person
 
 class Agent extends Person
 {
-    private $id;
+    protected $id;
     private $email;
     private $password;
     private $is_administrator;
     private $is_employed;
     private $salary;
 
-    public function __construct(int $id, string $email, string $password, string $first_name, string $last_name, int $salary)
+    public function __construct(int $id, string $email, string $password, string $first_name, string $last_name, int $salary, bool $is_administrator, bool $is_employed)
     {
         parent::__construct($first_name, $last_name);
         $this->id = $id;
@@ -30,6 +30,24 @@ class Agent extends Person
         $this->is_administrator = false;  //that is the default value
         $this->is_employed = true;
         $this->salary = $salary;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function getFirstName(){
+        return $this->first_name;
+    }
+    public function getLastName(){
+        return $this->last_name;
+    }
+    public function getEmail(){
+        return $this->email;
+    }
+    public function getAdministrator(){
+        return $this->is_administrator;
+    }
+    public function getEmployed(){
+        return $this->is_employed;
     }
 }
 
@@ -47,14 +65,26 @@ class Customer extends Person
         $this->email = $email;
     }
 
-    public function getFullName()
-    {
-        return strtoupper($this->$first_name . ' ' . $this->$last_name);
-
+//    public function getFullName()
+//    {
+//        return strtoupper($this->first_name . ' ' . $this->last_name);
+//
+//    }
+    public function getId(){
+        return $this->id;
+    }
+    public function getFirstName(){
+        return $this->first_name;
+    }
+    public function getLastName(){
+        return $this->last_name;
+    }
+    public function getEmail(){
+        return $this->email;
     }
 }
 
-class Property
+class Listing
 {
     private $id;
     private $region;
@@ -67,7 +97,7 @@ class Property
     private $sold;
     private $asking_price;
 
-    public function __construct(int $id, Region $region, string $postcode, int $bedrooms, int $bathrooms, Type $type, bool $has_garden, bool $has_parking, int $asking_price)
+    public function __construct(int $id, Region $region, string $postcode, int $bedrooms, int $bathrooms, Type $type, bool $has_garden, bool $has_parking, bool $sold, int $asking_price)
     {
         $this->id = $id;
         $this->region = $region;
@@ -85,6 +115,37 @@ class Property
     {
         $this->sold = true;
     }
+    public function getId(){
+        return $this->id;
+    }
+    public function getRegion(){
+        return $this->region;
+    }
+    public function getPostcode(){
+        return $this->postcode;
+    }
+    public function getBedrooms(){
+        return $this->bedrooms;
+    }
+    public function getBathrooms(){
+        return $this->bathrooms;
+    }
+    public function getType(){
+        return $this->type;
+    }
+    public function getGarden(){
+        return $this->has_garden;
+    }
+    public function getParking(){
+        return $this->has_parking;
+    }
+    public function getSoldStatus(){
+        return $this->sold;
+    }
+    public function getAskingPrice(){
+        return $this->asking_price;
+    }
+
 }
 
 class Type
@@ -129,19 +190,38 @@ class Sale
     private $date;
     private $agent;
     private $customer;
-    private $property;
+    private $listing;
     private $price;
 
-    public function __construct(int $id, string $date, Agent $agent, Customer $customer, Property $property, int $price)
+    public function __construct(int $id, string $date, Agent $agent, Customer $customer, Listing $listing, int $price)
     {
         $this->id = $id;
         $this->date = $date;
         $this->agent = $agent;
         $this->customer = $customer;
-        $this->property = $property;
+        $this->listing = $listing;
         $this->price = $price;
     }
+    public function getId(){
+        return $this->id;
+    }
+    public function getDate(){
+        return $this->id;
+    }
+    public function getAgent(){
+        return $this->id;
+    }
+    public function getCustomer(){
+        return $this->id;
+    }
+    public function getListing(){
+        return $this->id;
+    }
+    public function getPrice(){
+        return $this->id;
+    }
 }
+
 //
 //$myAgent = new Agent(1, 'hhh@hh.uk', 123, 'Hanna', 'Hannowitz', 30000);
 //$myCustomer = new Customer(1, 'Oliver', 'Smith', 1, 'oliver.s@hotmail.com');
