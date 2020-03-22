@@ -1,6 +1,6 @@
 <?php
 namespace Agency;
-class Region
+class Region implements HasId
 {
     private $id;
     private $name;
