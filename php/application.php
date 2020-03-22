@@ -1,5 +1,14 @@
 <?php
-require_once 'model.php';
+
+spl_autoload_register(function ($class_name) {
+    include 'model/' . str_replace('\\','/', $class_name) . '.php';
+
+});
+
+//spl_autoload_register(function ($class_name) { //also works
+//    include_once 'model.php';
+//});
+
 echo "Welcome\nPlease chose one of the options\n\n";
 echo "\n-  -  -  -Region-  -  -\n";
 echo "1. Add Region \n";
@@ -44,9 +53,9 @@ do {
         $user_region_id = fgets(STDIN);
         echo "Enter region name: ";
         $user_region_name = fgets(STDIN);
-        $region = new Region($user_region_id, $user_region_name);
+        $region = new \Agency\Region(intval($user_region_id), $user_region_name);
         $regions[] = $region; // push on or more elements onto the end of array
-        echo $region->getId() . ' ' . $region->getName();
+        echo "inserted";
     } elseif ($user_input == 2) {
         echo "Showing regions \n";
         if (empty($regions)) {
@@ -62,9 +71,9 @@ do {
         $user_type_id = fgets(STDIN);
         echo "Enter Type name: ";
         $user_type_name = fgets(STDIN);
-        $type = new Type($user_type_id, $user_type_name);
+        $type = new \Agency\Type(intval($user_type_id), $user_type_name);
         $types[] = $type; // push on or more elements onto the end of array
-        echo $type->getId() . ' ' . $type->getName();
+        echo "inserted";
     } elseif ($user_input == 4) {
         echo "Showing Types \n";
         if (empty($types)) {
@@ -90,19 +99,20 @@ do {
         $user_agent_salary = fgets(STDIN);
         echo "Is administrator: ";
         $user_agent_is_administrator = fgets(STDIN);
-        if ($user_agent_is_administrator = "") {
-            $user_agent_is_administrator = false;
+        if ($user_agent_is_administrator == "") {
+            $user_agent_is_administrator = 'false';
             echo "Not an administrator";
         }
         echo "Is employed ";
         $user_agent_is_employed = fgets(STDIN);
-        if ($user_agent_is_employed = "") {
-            $user_agent_is_employed = true;
+        if ($user_agent_is_employed == "") {
+            $user_agent_is_employed = 'true';
         }
-
-        $agent = new Agent($user_agent_id, $user_agent_email, $user_agent_password, $user_agent_first_name, $user_agent_last_name, $user_agent_salary, $user_agent_is_administrator, $user_agent_is_employed);
+//        var_dump($user_agent_salary);
+//        var_dump ($user_agent_id);
+        $agent = new \Agency\Agent(intval($user_agent_id), $user_agent_email, $user_agent_password, $user_agent_first_name, $user_agent_last_name, intval($user_agent_salary), $user_agent_is_administrator === 'true', $user_agent_is_employed === 'true');
         $agents[] = $agent; // push on or more elements onto the end of array
-        echo $agent->getId() . ' ' . $agent->getFirstName();
+        echo "inserted";
     } elseif ($user_input == 6) {
         echo "Showing Agents \n";
         if (empty($agents)) {
@@ -124,9 +134,9 @@ do {
         $user_customer_password = fgets(STDIN);
         echo "Enter Customer email: ";
         $user_customer_email = fgets(STDIN);
-        $customer = new Customer($user_customer_id, $user_customer_email, $user_customer_password, $user_customer_first_name, $user_customer_last_name);
+        $customer = new \Agency\Customer(intval($user_customer_id), $user_customer_email, $user_customer_password, $user_customer_first_name, $user_customer_last_name);
         $customers[] = $customer; // push on or more elements onto the end of array
-        echo $customer->getId() . ' ' . $customer->getFirstName();
+        echo "inserted";
     } elseif ($user_input == 8) {
         echo "Showing Customera \n";
         if (empty($customers)) {
@@ -142,11 +152,12 @@ do {
         $user_listing_id = fgets(STDIN);
         echo "Enter listing region: ";
         $user_listing_region = fgets(STDIN);
-
+        $chosen_region;
         foreach ($regions as $region) {
             if ($region->getId() != $user_listing_region) {
                 echo "Listing does not exist";
             } else {
+               
                 $chosen_region = $region;
             }
         }
@@ -160,7 +171,7 @@ do {
         $user_bathrooms = fgets(STDIN);
         echo "Enter type: ";
         $user_listing_type = fgets(STDIN);
-
+        $chosen_type;
         foreach ($types as $type) {
             if ($type->getId() != $user_listing_type) {
                 echo "Type does not exist";
@@ -179,9 +190,9 @@ do {
         $user_asking_price = fgets(STDIN);
 
 
-        $listing = new Listing($user_listing_id, $chosen_region, $user_postcode, $user_bedrooms, $user_bathrooms, $chosen_type, $user_garden, $user_parking, $user_sold, $user_asking_price);
+        $listing = new \Agency\Listing(intval($user_listing_id), $chosen_region, $user_postcode, intval($user_bedrooms), intval($user_bathrooms), $chosen_type, $user_garden, $user_parking, $user_sold, intval($user_asking_price));
         $listings[] = $listing; // push on or more elements onto the end of array
-        // echo $listing->getId() . ' ' . $listing->getName();
+        echo "inserted";
     } elseif ($user_input == 10) {
         echo "Showing listings \n";
         if (empty($listings)) {
@@ -228,9 +239,9 @@ do {
         }
         echo "Enter Sale price: ";
         $user_sale_price = fgets(STDIN);
-        $sale = new Sale($user_sale_id, $user_sale_date, $chosen_agent, $chosen_customer, $chosen_listing, $user_sale_price);
+        $sale = new \Agency\Sale(intval($user_sale_id), $user_sale_date, $chosen_agent, $chosen_customer, $chosen_listing, intval($user_sale_price));
         $sales[] = $sale; // push on or more elements onto the end of array
-        echo $sale->getId() . ' ' . $sale->getName();
+        echo "inserted";
     } elseif ($user_input == 12) {
         echo "Showing Sales \n";
         if (empty($sales)) {
@@ -243,8 +254,3 @@ do {
     }
 
 } while ($user_input != 13);
-
-
-
-
-
