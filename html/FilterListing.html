@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Insert Listing</title>
+    <title>Filter Listing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,7 +17,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 </head>
-<div>
+<body>
 <div>
     <div class="row h-25 d-inline-block"></div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -39,105 +39,105 @@
         </li>
         <div class="col-md-3"></div>
         <li class="nav-item">
-            <a href="Homepage.php"><img src="assets/logo.png" alt="Logo"/></a>
+            <a href="Homepage.php"><img src="assets/logo.png" width="400px" alt="Logo"/></a>
         </li>
     </ul>
 </div>
-<h3 class="card-header text-center font-weight-bold text-uppercase py-4">Insert Listing</h3>
+<h3 class="card-header text-center font-weight-bold text-uppercase py-4">FilterListing</h3>
 
 <div class="container">
-<form method="post" >
-    <div class="form-group row col-auto" autofocus>
-        <label for="Region" class="col-sm-2 col-form-label col-form-label-sm">Region</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Region">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+    <form method="post">
+        <div class="form-group row col-auto" autofocus>
+            <label for="Region" class="col-sm-2 col-form-label col-form-label-sm">Region</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Region">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto">
-        <label for="Postcode" class="col-sm-2  col-form-label-sm">Postcode</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control form-control-sm" id="Postcode">
+        <div class="form-group row col-auto">
+            <label for="Postcode" class="col-sm-2  col-form-label-sm">Postcode</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control form-control-sm" id="Postcode">
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto">
-        <label for="Bedroom" class="col-sm-2  col-form-label-sm">Bedroom</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Bedroom">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5+</option>
-            </select>
+        <div class="form-group row col-auto">
+            <label for="Bedroom" class="col-sm-2  col-form-label-sm">Bedroom</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Bedroom">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5+</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto">
-        <label for="Bathroom" class="col-sm-2  col-form-label-sm">Bathroom</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Bathroom">
-                <option>1</option>
-                <option>2</option>
-                <option>3+</option>
-            </select>
+        <div class="form-group row col-auto">
+            <label for="Bathroom" class="col-sm-2  col-form-label-sm">Bathroom</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Bathroom">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3+</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto">
-        <label for="Type" class="col-sm-2  col-form-label-sm">Type</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Type">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
+        <div class="form-group row col-auto">
+            <label for="Type" class="col-sm-2  col-form-label-sm">Type</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Type">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto">
-        <label for="Garden" class="col-sm-2  col-form-label-sm">Garden</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Garden">
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+        <div class="form-group row col-auto">
+            <label for="Garden" class="col-sm-2  col-form-label-sm">Garden</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Garden">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto d-flex justify-content-around">
-        <label for="Parking" class="col-sm-2  col-form-label-sm">Parking</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Parking">
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+        <div class="form-group row col-auto d-flex justify-content-around">
+            <label for="Parking" class="col-sm-2  col-form-label-sm">Parking</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Parking">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto d-flex justify-content-around">
-        <label for="Sold" class="col-sm-2  col-form-label-sm">Sold</label>
-        <div class="col-sm-10">
-            <select class="form-control form-control-sm" id="Sold">
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+        <div class="form-group row col-auto d-flex justify-content-around">
+            <label for="Sold" class="col-sm-2  col-form-label-sm">Sold</label>
+            <div class="col-sm-10">
+                <select class="form-control form-control-sm" id="Sold">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row col-auto d-flex justify-content-around">
-        <label for="AskingPrice" class="col-sm-2  col-form-label-sm">Asking Price</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control form-control-sm" id="AskingPrice">
+        <div class="form-group row col-auto d-flex justify-content-around">
+            <label for="AskingPrice" class="col-sm-2  col-form-label-sm">Asking Price</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control form-control-sm" id="AskingPrice">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm .btn-lg">
-            <input  type="submit" value="Filter" class="btn btn-danger btn-rounded btn-sm my-0 text-center col-auto" id="btn-colour" />
+        <div class="row">
+            <div class="col-sm .btn-lg">
+                <input type="submit" value="Filter"
+                       class="btn btn-danger btn-rounded btn-sm my-0 text-center col-auto" id="btn-colour"/>
+            </div>
         </div>
-    </div>
-</form>
-</div>
+    </form>
 </div>
 </body>
 </html>
