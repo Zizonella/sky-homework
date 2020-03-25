@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding:60px;
+    margin:60px;
+}
+label {
+    /*display: block;*/
+    margin: 5px 10px 5px 0;
+    display: flex;
+
+}
+.input-group input {
+    display: inline-flex;
+    justify-content: space-around;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.submit {
+    margin-top:30px;
+    display: flex;
+}
