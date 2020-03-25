@@ -1,7 +1,11 @@
 <?php
 namespace Agency;
+
+require('Notification.php');
+
 class Agent extends Person
 {
+    use \Notification;
     private $id;
     private $email;
     private $password;
@@ -18,6 +22,7 @@ class Agent extends Person
         $this->is_administrator = $is_administrator;  //that is the default value
         $this->is_employed = $is_employed;
         $this->salary = $salary;
+        $this->notify();
     }
     public function getId(){
         return $this->id;
