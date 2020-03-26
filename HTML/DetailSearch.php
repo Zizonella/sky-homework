@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Detailed Listing Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -12,30 +12,35 @@
         <link href="css.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
         <div class="container">
-             <div class="row h-25 d-inline-block"></div>
-             <div class="row">
-                 <div class="col-md-7">
-             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Login</a>
-              </li>
-              </div>
-              <div class="col-md-5">
-                <a href="Homepage.php"><img src="images/logo.png" max-width="400px" alt="Logo"/></a>
-            </ul>
-             </div>  
-            </div>
+           <div class="row h-25 d-inline-block"></div>
+           <div class="row">
+               <div class="col-md-7">
+                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                       <li class="nav-item">
+                           <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                              aria-controls="pills-home" aria-selected="true">Home</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                              aria-controls="pills-profile" aria-selected="false">About us</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                              aria-controls="pills-contact" aria-selected="false">Contact us</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                              aria-controls="pills-contact" aria-selected="false">Login</a>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-5">
+                   <a href="Homepage.php"><img src="images/logo.png" width="400px" alt="Logo"/></a>
+               </div>
+           </div>
+        </div>   
+        <div class="container">
              <div class="row">
             <button type="button" class="btn btn-outline-dark btn-lg">Return to Searches</button>
              </div>
@@ -121,21 +126,19 @@
                           </div>
                     <div class="row h-25 d-inline-block"></div>
                 </div>
-                 
-                 <div class="col-md-4">
+                <div class="col-md-4">
                      <div class="row h-20 d-inline-block"></div>
                      <div class="row">
-                           <div class="card" style="width: 19rem;  margin-left: 50px;">
-                            <h5 class="card-header">Region/ Location</h5>
-                            <div class="card-body">
-                              <h5 class="card-title">Price £xxx <button style="margin-left: 80px;" type="button" class="btn btn-outline-dark btn-sm">Enquire</button></h5>
-                              <p class="card-text"> A luxury new development of 1, 2, 3 beds and penthouse apartments Which is a short walk to the open spaces of Holland Park and the world class shopping at Westfield Shepherds Bush. This area offers a local feel with a plethora of shops, bars and restaurants on Kensington High Street. With access to a Concierge, gym and private cinema, The Atelier is one of the most sought after new schemes in West London.</p>
-                             </div>
-                            </div>
+                        <div class="card" style="width: 19rem;  margin-left: 50px;">
+                         <h5 class="card-header">Region/ Location</h5>
+                         <div class="card-body">
+                           <h5 class="card-title">Price £xxx <button style="margin-left: 80px;" type="button" class="btn btn-outline-dark btn-sm">Enquire</button></h5>
+                           <p class="card-text"> A luxury new development of 1, 2, 3 beds and penthouse apartments Which is a short walk to the open spaces of Holland Park and the world class shopping at Westfield Shepherds Bush. This area offers a local feel with a plethora of shops, bars and restaurants on Kensington High Street. With access to a Concierge, gym and private cinema, The Atelier is one of the most sought after new schemes in West London.</p>
+                          </div>
+                        </div>
                      </div>
                     <div class="row h-20 d-inline-block"></div>
-                    <div class="row">
-                    
+                    <div class="row">                    
                      <div class="card" style="width: 16rem;  margin-left: 80px; margin-top: 50px;">
                         <img src="images/agent1.png" class="card-img-top" alt="Agent1">
                         <div class="card-body">
@@ -144,15 +147,10 @@
                           <p class="card-text">Agent's Phone Number</p>
                           <p class="card-text">Agent's Email</p>
                         </div>
-                      </div>
-                       
-                 </div>
-                 </div>
-                 
-                 
+                      </div>                       
+                    </div>
+                </div>                 
             </div>
-                 
-            
         </div>    
     </body>
 </html>

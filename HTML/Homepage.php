@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Home Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -12,30 +12,37 @@
         <link href="css.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
         <div class="container">
-             <div class="row h-25 d-inline-block"></div>
-             <div class="row">
-                 <div class="col-md-7">
-             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Login</a>
-              </li>
-              </div>
-              <div class="col-md-5">
-                <a href="Homepage.php"><img src="images/logo.png" max-width="400px" alt="Logo"/></a>
-            </ul>
-             </div>  
-            </div>
+           <div class="row h-25 d-inline-block"></div>
+           <div class="row">
+               <div class="col-md-7">
+                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                       <li class="nav-item">
+                           <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                              aria-controls="pills-home" aria-selected="true">Home</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                              aria-controls="pills-profile" aria-selected="false">About us</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                              aria-controls="pills-contact" aria-selected="false">Contact us</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                              aria-controls="pills-contact" aria-selected="false">Login</a>
+                       </li>
+                   </ul>
+               </div>
+
+               <div class="col-md-5">
+                   <a href="Homepage.php"><img src="images/logo.png" width="400px" alt="Logo"/></a>
+               </div>
+
+           </div>
+       </div>
+       <div class="container">
              <div class="card bg-dark text-white">
                 <img class="card-img" src="images/banner.png" alt="Banner image">
                 <div class="card-img-overlay">
@@ -75,7 +82,7 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
-</div>
+            </div>
              
           
         </div>
