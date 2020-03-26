@@ -167,7 +167,7 @@
                         </div>
                         <div class="form-group row">
                           <div class="col-sm-2"></div>
-                          <label for="inputTypeId" class="col-sm-2 col-form-label" >Type of Property</label>
+                          <label for="inputType" class="col-sm-2 col-form-label" >Type of Property</label>
                           <div class="col-sm-5" >
                             <input type="text" class="form-control" id="inputType" name="type" placeholder="Type of Property" required>
                           </div>
