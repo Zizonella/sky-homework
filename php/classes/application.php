@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($class_name) {
-    include 'model/' . str_replace('\\','/', $class_name) . '.php';
+    include 'classes/' . str_replace('\\','/', $class_name) . '.php';
 
 });
 
