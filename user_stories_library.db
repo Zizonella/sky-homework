@@ -1,0 +1,24 @@
+
+#I am a customer 
+# who wants to know if property 1 has been sold in the past 
+# so I can find out when it was sold and at what price. 
+SELECT 
+sale.id, date, price, property_id AS property_reference
+FROM sale
+WHERE property_id= '1';
+
+
+# As an agency owner 
+# I want add a new region to the database 
+# as I am expanding my agency  
+INSERT INTO region(name)
+VALUES('Brighton');
+
+
+# As an agent 
+# I want to inform my custumer how many years it will take to pay of their morgae if they have £300,000 dposit and will pay £1000 each month
+# so that the customer has mor knowlage  
+SELECT
+property.id, postcode, asking_price, (asking_price - 300000) / 1000 AS years_on_morgage
+FROM property
+WHERE id=2;
