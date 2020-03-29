@@ -1,8 +1,20 @@
 <?php
 
-spl_autoload_register(function ($class_name) {
-    include 'classes/' . str_replace('\\','/', $class_name) . '.php';
+require_once 'classes/Agency/connection.php';
 
+$conn = null;
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo $e->getMessage();
+    die();
+}
+
+
+spl_autoload_register(function ($class_name) {
+    include 'classes/' . str_replace('\\', '/', $class_name) . '.php';
 });
 
 //spl_autoload_register(function ($class_name) { //also works
@@ -37,12 +49,12 @@ echo "\n13. Exit \n";
 echo "\n";
 echo "Enter your choice: ";
 
-$regions = [];
-$types = [];
-$agents = [];
-$customers = [];
-$listings = [];
-$sales = [];
+//$regions = [];
+//$types = [];
+//$agents = [];
+//$customers = [];
+//$listings = [];
+//$sales = [];
 
 
 do {
@@ -54,17 +66,30 @@ do {
         echo "Enter region name: ";
         $user_region_name = fgets(STDIN);
         $region = new \Agency\Region(intval($user_region_id), $user_region_name);
-        $regions[] = $region; // push on or more elements onto the end of array
+
+        //write sql statement
+        $sql = "INSERT INTO region (id, name) VALUES ('" . $region->getId() . "', '" . $region->getName() . "')";
+        echo $sql;
+        $conn->exec($sql);
+
+        //$regions[] = $region; // push on or more elements onto the end of array. Not needed anymore because of PDO
         echo "inserted";
     } elseif ($user_input == 2) {
         echo "Showing regions \n";
-        if (empty($regions)) {
-            echo 'No regions added yet.';
-        } else {
-            foreach ($regions as $region) {
-                echo $region->getId() . ' ' . $region->getName();
-            }
-        }
+
+        $sql = 'SELECT * FROM region';
+        foreach ($conn->query($sql) as $row) {
+            print $row['id'] . "\t";
+            print $row['name'] . "\t";
+        };
+//
+//        if (empty($regions)) {
+//            echo 'No regions added yet.';
+//        } else {
+//            foreach ($regions as $region) {
+//                echo $region->getId() . ' ' . $region->getName();
+//            }
+//        }
     } else if ($user_input == 3) {
         echo "Adding new Type \n";
         echo "Enter Type ID: ";
@@ -157,7 +182,7 @@ do {
             if ($region->getId() != $user_listing_region) {
                 echo "Listing does not exist";
             } else {
-               
+
                 $chosen_region = $region;
             }
         }
