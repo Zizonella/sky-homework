@@ -71,7 +71,7 @@ if (isset($_POST['Calculate'])) {
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Mortgage calculator</h3>
 </div>
 <!--    <div class="col-md-8 mx-auto">-->
-        <form method="post" action="calculateMortgageb.html.php" class=""col-md-6 mx-auto"">
+        <form method="post" action="calculateMortgage.php" class=""col-md-6 mx-auto"">
             <div class="form-group row">
                 <div class="form-group col-md-4">
                     <label for="amount">Mortgage Amount</label>
