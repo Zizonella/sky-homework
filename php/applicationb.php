@@ -2,17 +2,6 @@
 
 require_once 'classes/Agency/connection.php';
 
-$conn = null; //end the database connection
-
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-    die();
-}
-
-
 spl_autoload_register(function ($class_name) {
     include 'classes/' . str_replace('\\', '/', $class_name) . '.php';
 });
@@ -49,12 +38,12 @@ echo "\n13. Exit \n";
 echo "\n";
 echo "Enter your choice: ";
 
-$regions = [];
-$types = [];
-$agents = [];
-$customers = [];
-$listings = [];
-$sales = [];
+//$regions = [];
+//$types = [];
+//$agents = [];
+//$customers = [];
+//$listings = [];
+//$sales = [];
 
 
 do {
@@ -77,19 +66,19 @@ do {
     } elseif ($user_input == 2) {
         echo "Showing regions \n";
 
-//        $sql = 'SELECT * FROM region';
-//        foreach ($conn->query($sql) as $row) {
-//            print $row['id'] . "\t";
-//            print $row['name'] . "\t";
-//        };
+        $sql = 'SELECT * FROM region';
+        foreach ($conn->query($sql) as $row) {
+            print $row['id'] . "\t";
+            print $row['name'] . "\t";
+        };
 //
-        if (empty($regions)) {
-            echo 'No regions added yet.';
-        } else {
-            foreach ($regions as $region) {
-                echo $region->getId() . ' ' . $region->getName();
-            }
-        }
+//        if (empty($regions)) {
+//            echo 'No regions added yet.';
+//        } else {
+//            foreach ($regions as $region) {
+//                echo $region->getId() . ' ' . $region->getName();
+//            }
+//        }
     } else if ($user_input == 3) {
         echo "Adding new Type \n";
         echo "Enter Type ID: ";
@@ -136,17 +125,34 @@ do {
 //        var_dump($user_agent_salary);
 //        var_dump ($user_agent_id);
         $agent = new \Agency\Agent(intval($user_agent_id), $user_agent_email, $user_agent_password, $user_agent_first_name, $user_agent_last_name, intval($user_agent_salary), $user_agent_is_administrator === 'true', $user_agent_is_employed === 'true');
-        $agents[] = $agent; // push on or more elements onto the end of array
+        $sql = "INSERT INTO agent (id,email,password,first_name,last_name,salary,is_administrator,is_employed)
+        VALUES ('" . $agent->getId() . "', '" . $agent->getFirstName() . "', '" . $agent->getLastName() . "', '" . $agent->getPassword() . "',
+         '" . $agent->getEmail() . "', '" . $agent->getAdministrator() . "', '" . $agent->getEmployed . "')";
+        echo $sql;
+        $conn->exec($sql);
+
+        //$agents[] = $agent; // push on or more elements onto the end of array
         echo "inserted";
     } elseif ($user_input == 6) {
         echo "Showing Agents \n";
-        if (empty($agents)) {
-            echo 'No Agents added yet.';
-        } else {
-            foreach ($agents as $agent) {
-                echo $agent->getId() . ' ' . $agent->getFirstName() . ' ' . $agent->getLastName() . ' ' . $agent->getEmail() . ' ' . $agent->getAdministrator() . ' ' . $agent->getEmployed();
-            }
-        }
+        $sql = 'SELECT * FROM agent';
+        foreach ($conn->query($sql) as $row) {
+            print $row['id'] . "\t";
+            print $row['email'] . "\t";
+            print $row['password'] . "\t";
+            print $row['first_name'] . "\t";
+            print $row['last_name'] . "\t";
+            print $row['salary'] . "\t";
+            print $row['is_administrator'] . "\t";
+            print $row['is_employed'] . "\t";
+        };
+//        if (empty($agents)) {
+//            echo 'No Agents added yet.';
+//        } else {
+//            foreach ($agents as $agent) {
+//                echo $agent->getId() . ' ' . $agent->getFirstName() . ' ' . $agent->getLastName() . ' ' . $agent->getEmail() . ' ' . $agent->getAdministrator() . ' ' . $agent->getEmployed();
+//            }
+//        }
     } else if ($user_input == 7) {
         echo "Adding new Customer \n";
         echo "Enter Customer ID: ";
@@ -205,13 +211,13 @@ do {
             }
         }
 
-        echo "Does it have a garden?: ";
+        echo "Does it have a garden ?: ";
         $user_garden = fgets(STDIN);
         echo "Does it have a parking: ";
         $user_parking = fgets(STDIN);
         echo "Has it been sold: ";
         $user_sold = fgets(STDIN);
-        echo "Enter asking price?: ";
+        echo "Enter asking price ?: ";
         $user_asking_price = fgets(STDIN);
 
 

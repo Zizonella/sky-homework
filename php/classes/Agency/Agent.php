@@ -36,9 +36,19 @@ class Agent extends User
         return $this->last_name;
     }
 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getSalary()
+    {
+        return $this->salary;
     }
 
     public function getAdministrator()
