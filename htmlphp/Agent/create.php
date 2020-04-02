@@ -1,6 +1,7 @@
 
 <?php
-require 'db.php';
+require_once '../../php/classes/Agency/connection.php';
+
 $message ='';
 if (isset ($_POST['first_name']) && isset ($_POST['last_name']) && isset ($_POST['password']) && isset ($_POST['email']) 
         && isset ($_POST['is_administrator']) && isset ($_POST['is_employed'])  && isset ($_POST['salary']) ){
@@ -14,7 +15,7 @@ if (isset ($_POST['first_name']) && isset ($_POST['last_name']) && isset ($_POST
            $salary= $_POST['salary'];
            
            $sql='INSERT INTO agent(first_name,last_name, password, email, is_administrator,is_employed, salary) VALUES(:first_name, :last_name, :password , :email, :is_administrator, :is_employed, :salary)';
-           $statement = $connection-> prepare($sql);
+           $statement = $conn-> prepare($sql);
           $statement-> execute([':first_name'=>$first_name, ':last_name'=>$last_name, ':password'=>$password, ':email'=>$email, ':is_administrator'=>$is_administrator,':is_employed'=>$is_employed, ':salary'=>$salary]);
         }
 
@@ -58,17 +59,32 @@ if (isset ($_POST['first_name']) && isset ($_POST['last_name']) && isset ($_POST
                         <input type="text" name="email" id="email" class="form-control"> 
                         
                     </div>
-                     <div class="form-group">
-                        <label for="name">Is administrator</label> 
-                        <input  type="text" name="is_administrator" id="is_administrator" class="form-control"> 
-                        
+                    <div class="form-group row ">
+                        <div class="col-sm-2"></div>
+                        <label for="is_administrator" class="col-sm-2 col-form-label">Administrator </label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_administrator" id="is_administrator" value="true">
+                            <label class="form-check-label" for="inlineRadio1">IN</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input  class="form-check-input" type="radio" name="is_administrator" id="is_administrator" value="false">
+                            <label class="form-check-label" for="inlineRadio2">OUT</label>
+                        </div>
                     </div>
-                     <div class="form-group">
-                        <label for="name">Is employed</label> 
-                        <input type="text" name="is_employed" id="is_employed" class="form-control"> 
-                        
+                    <div class="form-group row ">
+                        <div class="col-sm-2"></div>
+                        <label for="is_employed" class="col-sm-2 col-form-label">Employed </label>
+                        <div class="form-check form-check-inline">
+                            <input  class="form-check-input" type="radio" name="is_employed" id="is_employed" value="true">
+                            <label class="form-check-label" for="inlineRadio1">IN</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input  class="form-check-input" type="radio" name="is_employed" id="is_employed" value="false">
+                            <label class="form-check-label" for="inlineRadio2">OUT</label>
+                        </div>
                     </div>
-                     <div class="form-group">
+
+                    <div class="form-group">
                         <label for="name">Salary</label> 
                         <input type="text" name=" salary" id=" salary" class="form-control"> 
                         
@@ -88,5 +104,3 @@ if (isset ($_POST['first_name']) && isset ($_POST['last_name']) && isset ($_POST
      
     </div>  
 
-
-<?php require 'footer.php';?>
